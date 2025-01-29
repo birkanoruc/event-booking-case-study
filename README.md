@@ -50,10 +50,6 @@ Bu proje aşağıdaki teknolojilerle geliştirilmiştir:
 -   **POST /api/reservations/{id}/confirm**: Rezervasyon onaylama
 -   **DELETE /api/reservations/{id}**: Rezervasyon iptali/silme
 
-### Postman Collection
-
--   **\* https://www.postman.com/lunar-module-operator-3893016/event-booking-case/overview \_**
-
 ## Kurulum
 
 1. Projeyi klonlayın:
@@ -101,4 +97,33 @@ Bu proje aşağıdaki teknolojilerle geliştirilmiştir:
     php artisan serve
     ```
 
-Artık uygulamanız çalışıyor ve API'yi kullanabilirsiniz.
+### Postman Collection
+
+-   \*\*https://www.postman.com/lunar-module-operator-3893016/event-booking-case/overview
+
+## Kullanım
+
+1. Postman collections ve environments export ederek açın, global env ayarlarını api için yapılandırın.
+2. --seed oluşturulan ile sahte venue ve seats verileri veritabanınızda olacaktır.
+3. admin@gmail.com ve admin123 bilgileri ile adminlere özel endpointlere erişim sağlayabilirsiniz.
+4. Etkinlik oluşturun, ardından etkinlik id'si ile koltukları listeleyin.
+5. Bir koltuk seçin ve bloklamaya çalışın.
+6. Koltuk blokladığınızdan emin olduktan sonra rezervasyon oluşturun.
+7. Tickets endpointleri çalışmamaktadır.
+
+## Neleri Barındırıyor?
+
+1. JWT Token
+2. Restfull API standartlarında cevaplar
+3. Koltuk müsaitlik kontrolü
+4. 15 dakikalık rezervasyon kontrolü (dinamik olarak accessor ile kontrol sağlanıyor)
+5. Eşzamanlı koltuk revize engeli
+6. Rezervasyon süresi dolduğunda koltuklar otomatik serbest bırakma.
+7. İnput validate.
+8. Uygun hata mesajlar.
+9. Request/Response logging.
+10. Uygun http durum kodları.
+11. Rate limiting.
+12. Repository ve Service Layer design pattern
+13. n+1 problemleri için with kullanımlar.
+14. Kod yorumları.
