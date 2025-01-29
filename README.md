@@ -1,66 +1,104 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Online Etkinlik Biletleme ve Rezervasyon Sistemi
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Bu proje, online bir etkinlik biletleme ve rezervasyon sisteminin REST API'sini geliştirmeyi amaçlamaktadır. Sistem, etkinlik listeleme, koltuk rezervasyonu ve bilet satın alma işlemlerini yönetmektedir. API, etkinlikler, koltuklar, rezervasyonlar ve bilet işlemleri gibi temel işlevleri yerine getirir.
 
-## About Laravel
+## Teknolojiler
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Bu proje aşağıdaki teknolojilerle geliştirilmiştir:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   PHP 8.1+
+-   Laravel/Symfony Framework
+-   MySQL/PostgreSQL
+-   JWT (JSON Web Token) authentication
+-   RESTful API standartları
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Gereksinimler
 
-## Learning Laravel
+-   PHP 8.1 veya daha yeni bir sürüm
+-   Composer
+-   Veritabanı (MySQL/PostgreSQL)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## API Endpoint'leri
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Authentication Endpoints
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   **POST /api/auth/register**: Kayıt olma
+-   **POST /api/auth/login**: Giriş yapma
+-   **POST /api/auth/refresh**: Token yenileme
+-   **POST /api/auth/logout**: Çıkış yapma
 
-## Laravel Sponsors
+### Event Endpoints
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-   **GET /api/events**: Tüm etkinliklerin listelenmesi, filtreleme
+-   **GET /api/events/{id}**: Etkinlik detaylarının listelenmesi
+-   **POST /api/events**: Yeni etkinlik oluşturma (Admin only)
+-   **PUT /api/events/{id}**: Etkinlik güncelleme (Admin only)
+-   **DELETE /api/events/{id}**: Etkinlik Silme/İptal (Admin only)
 
-### Premium Partners
+### Seat Endpoints
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-   **GET /api/events/{id}/seats**: Etkinliğe ait koltuk detayları
+-   **GET /api/venues/{id}/seats**: Mekana ait koltuk detayları
+-   **POST /api/seats/block**: Koltuk bloklama
+-   **DELETE /api/seats/release**: Koltuk blok kaldırma
 
-## Contributing
+### Reservation Endpoints
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   **POST /api/reservations**: Rezervasyon oluşturma
+-   **GET /api/reservations**: Rezervasyon listeleme
+-   **GET /api/reservations/{id}**: Rezervasyon detaylarının listelenmesi
+-   **POST /api/reservations/{id}/confirm**: Rezervasyon onaylama
+-   **DELETE /api/reservations/{id}**: Rezervasyon iptali/silme
 
-## Code of Conduct
+### Postman Collection
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+-   **\* https://www.postman.com/lunar-module-operator-3893016/event-booking-case/overview \_**
 
-## Security Vulnerabilities
+## Kurulum
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Projeyi klonlayın:
 
-## License
+    ```bash
+    git clone https://github.com/birkanoruc/event-booking-case-study.git
+    cd event-booking-case-study
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+2. Bağımlılıkları yükleyin:
+
+    ```bash
+    composer install
+    ```
+
+3. `.env` dosyasını yapılandırın (veritabanı bağlantısı, JWT ayarları, vb.)
+
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=event_booking_case
+    DB_USERNAME=root
+    DB_PASSWORD=
+
+    AUTH_GUARD=api
+
+    TOKEN_TYPE=jwt
+
+    JWT_SECRET=sMjjQPcswf58aeZfhtNuH2x8eWdcrXwaLMRtLAQ3Fu8dYK1kpzQjeMtTXalS75DT
+    JWT_TTL=60
+    JWT_REFRESH_TTL=20160
+
+    API_RATE_LIMIT=60
+    API_RATE_LIMIT_TIME=1
+
+4. Veritabanını oluşturun ve migrations'ları çalıştırın:
+
+    ```bash
+    php artisan migrate --seed
+    ```
+
+5. Uygulamayı çalıştırın:
+
+    ```bash
+    php artisan serve
+    ```
+
+Artık uygulamanız çalışıyor ve API'yi kullanabilirsiniz.
